@@ -1,0 +1,350 @@
+from snakemake.utils import min_version
+min_version("6.0")
+
+
+configfile: "config/config.yaml"
+
+
+# Separate module for each dataset
+
+module Chemerin:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["Chemerin"]
+    prefix: "Chemerin"
+
+use rule * from Chemerin as Chemerin_*
+
+module Blueberry:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["Blueberry"]
+    prefix: "Blueberry"
+
+use rule * from Blueberry as Blueberry_*
+
+module MALL:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["MALL"]
+    prefix: "MALL"
+
+use rule * from MALL as MALL_*
+
+module Exercise:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["Exercise"]
+    prefix: "Exercise"
+
+use rule * from Exercise as Exercise_*
+
+module BISCUIT:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["BISCUIT"]
+    prefix: "BISCUIT"
+
+use rule * from BISCUIT as BISCUIT_*
+
+module Office:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["Office"]
+    prefix: "Office"
+
+use rule * from Office as Office_*
+
+module art_scher:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["art_scher"]
+    prefix: "art_scher"
+
+use rule * from art_scher as art_scher_*
+
+module asd_son:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["asd_son"]
+    prefix: "asd_son"
+
+use rule * from asd_son as asd_son_*
+
+module cdi_schubert:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["cdi_schubert"]
+    prefix: "cdi_schubert"
+
+use rule * from cdi_schubert as cdi_schubert_*
+
+module cdi_vincent:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["cdi_vincent"]
+    prefix: "cdi_vincent"
+
+use rule * from cdi_vincent as cdi_vincent_*
+
+module crc_baxter:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["crc_baxter"]
+    prefix: "crc_baxter"
+
+use rule * from crc_baxter as crc_baxter_*
+
+module crc_zeller:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["crc_zeller"]
+    prefix: "crc_zeller"
+
+use rule * from crc_zeller as crc_zeller_*
+
+module edd_singh:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["edd_singh"]
+    prefix: "edd_singh"
+
+use rule * from edd_singh as edd_singh_*
+
+module hiv_dinh:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["hiv_dinh"]
+    prefix: "hiv_dinh"
+
+use rule * from hiv_dinh as hiv_dinh_*
+
+module hiv_lozupone:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["hiv_lozupone"]
+    prefix: "hiv_lozupone"
+
+use rule * from hiv_lozupone as hiv_lozupone_*
+
+module hiv_noguerajulian:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["hiv_noguerajulian"]
+    prefix: "hiv_noguerajulian"
+
+use rule * from hiv_noguerajulian as hiv_noguerajulian_*
+
+module ibd_gevers:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["ibd_gevers"]
+    prefix: "ibd_gevers"
+
+use rule * from ibd_gevers as ibd_gevers_*
+
+module ibd_papa:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["ibd_papa"]
+    prefix: "ibd_papa"
+
+use rule * from ibd_papa as ibd_papa_*
+
+module ob_goodrich:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["ob_goodrich"]
+    prefix: "ob_goodrich"
+
+use rule * from ob_goodrich as ob_goodrich_*
+
+module ob_ross:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["ob_ross"]
+    prefix: "ob_ross"
+
+use rule * from ob_ross as ob_ross_*
+
+module ob_turnbaugh:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["ob_turnbaugh"]
+    prefix: "ob_turnbaugh"
+
+use rule * from ob_turnbaugh as ob_turnbaugh_*
+
+module ob_zhu:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["ob_zhu"]
+    prefix: "ob_zhu"
+
+use rule * from ob_zhu as ob_zhu_*
+
+module par_scheperjans:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["par_scheperjans"]
+    prefix: "par_scheperjans"
+
+use rule * from par_scheperjans as par_scheperjans_*
+
+module t1d_alkanani:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["t1d_alkanani"]
+    prefix: "t1d_alkanani"
+
+use rule * from t1d_alkanani as t1d_alkanani_*
+
+module t1d_mejialeon:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["t1d_mejialeon"]
+    prefix: "t1d_mejialeon"
+
+use rule * from t1d_mejialeon as t1d_mejialeon_*
+
+module GWMC_ASIA_NA:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["GWMC_ASIA_NA"]
+    prefix: "GWMC_ASIA_NA"
+
+use rule * from GWMC_ASIA_NA as GWMC_ASIA_NA_*
+
+module GWMC_HOT_COLD:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["GWMC_HOT_COLD"]
+    prefix: "GWMC_HOT_COLD"
+
+use rule * from GWMC_HOT_COLD as GWMC_HOT_COLD_*
+
+module sw_sed_detender:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["sw_sed_detender"]
+    prefix: "sw_sed_detender"
+
+use rule * from sw_sed_detender as sw_sed_detender_*
+
+module sw_plastic_frere:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["sw_plastic_frere"]
+    prefix: "sw_plastic_frere"
+
+use rule * from sw_plastic_frere as sw_plastic_frere_*
+
+module sed_plastic_hoellein:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["sed_plastic_hoellein"]
+    prefix: "sed_plastic_hoellein"
+
+use rule * from sed_plastic_hoellein as sed_plastic_hoellein_*
+
+module wood_plastic_kesy:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["wood_plastic_kesy"]
+    prefix: "wood_plastic_kesy"
+
+use rule * from wood_plastic_kesy as wood_plastic_kesy_*
+
+module seston_plastic_mccormick:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["seston_plastic_mccormick"]
+    prefix: "seston_plastic_mccormick"
+
+use rule * from seston_plastic_mccormick as seston_plastic_mccormick_*
+
+module glass_plastic_oberbeckmann:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["glass_plastic_oberbeckmann"]
+    prefix: "glass_plastic_oberbeckmann"
+
+use rule * from glass_plastic_oberbeckmann as glass_plastic_oberbeckmann_*
+
+module sed_plastic_rosato:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["sed_plastic_rosato"]
+    prefix: "sed_plastic_rosato"
+
+use rule * from sed_plastic_rosato as sed_plastic_rosato_*
+
+module ArcticTransects:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["ArcticTransects"]
+    prefix: "ArcticTransects"
+
+use rule * from ArcticTransects as ArcticTransects_*
+
+module ArcticFireSoils:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["ArcticFireSoils"]
+    prefix: "ArcticFireSoils"
+
+use rule * from ArcticFireSoils as ArcticFireSoils_*
+
+module ArcticFreshwaters:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["ArcticFreshwaters"]
+    prefix: "ArcticFreshwaters"
+
+use rule * from ArcticFreshwaters as ArcticFreshwaters_*
+
+module Ji_WTP_DS:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        config["Ji_WTP_DS"]
+    prefix: "Ji_WTP_DS"
+
+use rule * from Ji_WTP_DS as Ji_WTP_DS_*

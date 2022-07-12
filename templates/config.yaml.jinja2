@@ -1,0 +1,31 @@
+{% for dataset_name, dataset_dict in all_dataset_dict.items() %}
+{{ dataset_name }}:
+    table: {{ dataset_dict.table_file }}
+    metadata: {{ dataset_dict.metadata_file }}
+    tree:
+    model:
+        covariate: {{ dataset_dict.covariate_name }}
+        target: {{ dataset_dict.target_name }}
+        reference: {{ dataset_dict.reference_name }}
+{% endfor %}
+stylesheet: config/qadabra.mplstyle
+tools:
+    - deseq2
+    - ancombc
+    - songbird
+    - aldex2
+    - edger
+    - maaslin2
+    - metagenomeseq
+    - corncob
+songbird_params:
+    epochs: 5000
+    differential_prior: 1
+log_ratio_feat_pcts:
+    - 5
+    - 10
+    - 15
+    - 20
+ml_params:
+    n_splits: 10
+    n_repeats: 5

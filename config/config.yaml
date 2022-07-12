@@ -1,0 +1,364 @@
+
+Chemerin:
+    table: data/nearing_datasets/Studies/Chemerin/Chemerin_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/Chemerin/Chemerin_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: PaloAlto
+        reference: Dalhousie
+
+Blueberry:
+    table: data/nearing_datasets/Studies/Blueberry/Blueberry_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/Blueberry/Blueberry_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: Rhizosphere
+        reference: Soil
+
+MALL:
+    table: data/nearing_datasets/Studies/MALL/MALL_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/MALL/MALL_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: Y
+        reference: No
+
+Exercise:
+    table: data/nearing_datasets/Studies/Exercise/Exercise_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/Exercise/Exercise_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: exercise
+        reference: control
+
+BISCUIT:
+    table: data/nearing_datasets/Studies/BISCUIT/BISCUIT_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/BISCUIT/BISCUIT_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: CD
+        reference: control
+
+Office:
+    table: data/nearing_datasets/Studies/Office/Office_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/Office/Office_metadata.tsv
+    tree:
+    model:
+        covariate: city
+        target: toronto
+        reference: sandiego
+
+art_scher:
+    table: data/nearing_datasets/Studies/art_scher/art_scher_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/art_scher/art_scher_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: ART
+
+asd_son:
+    table: data/nearing_datasets/Studies/asd_son/asd_son_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/asd_son/asd_son_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: ASD
+
+cdi_schubert:
+    table: data/nearing_datasets/Studies/cdi_schubert/cdi_schubert_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/cdi_schubert/cdi_schubert_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: CDI
+        reference: H
+
+cdi_vincent:
+    table: data/nearing_datasets/Studies/cdi_vincent/cdi_vincent_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/cdi_vincent/cdi_vincent_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: CDI
+        reference: H
+
+crc_baxter:
+    table: data/nearing_datasets/Studies/crc_baxter/crc_baxter_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/crc_baxter/crc_baxter_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: CRC
+        reference: H
+
+crc_zeller:
+    table: data/nearing_datasets/Studies/crc_zeller/crc_zeller_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/crc_zeller/crc_zeller_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: CRC
+        reference: H
+
+edd_singh:
+    table: data/nearing_datasets/Studies/edd_singh/edd_singh_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/edd_singh/edd_singh_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: EDD
+
+hiv_dinh:
+    table: data/nearing_datasets/Studies/hiv_dinh/hiv_dinh_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/hiv_dinh/hiv_dinh_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: HIV
+
+hiv_lozupone:
+    table: data/nearing_datasets/Studies/hiv_lozupone/hiv_lozupone_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/hiv_lozupone/hiv_lozupone_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: HIV
+
+hiv_noguerajulian:
+    table: data/nearing_datasets/Studies/hiv_noguerajulian/hiv_noguerajulian_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/hiv_noguerajulian/hiv_noguerajulian_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: HIV
+
+ibd_gevers:
+    table: data/nearing_datasets/Studies/ibd_gevers/ibd_gevers_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/ibd_gevers/ibd_gevers_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: nonIBD
+        reference: CD
+
+ibd_papa:
+    table: data/nearing_datasets/Studies/ibd_papa/ibd_papa_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/ibd_papa/ibd_papa_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: nonIBD
+        reference: IBD
+
+ob_goodrich:
+    table: data/nearing_datasets/Studies/ob_goodrich/ob_goodrich_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/ob_goodrich/ob_goodrich_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: OB
+        reference: H
+
+ob_ross:
+    table: data/nearing_datasets/Studies/ob_ross/ob_ross_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/ob_ross/ob_ross_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: OB
+
+ob_turnbaugh:
+    table: data/nearing_datasets/Studies/ob_turnbaugh/ob_turnbaugh_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/ob_turnbaugh/ob_turnbaugh_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: OB
+
+ob_zhu:
+    table: data/nearing_datasets/Studies/ob_zhu/ob_zhu_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/ob_zhu/ob_zhu_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: OB
+
+par_scheperjans:
+    table: data/nearing_datasets/Studies/par_scheperjans/par_scheperjans_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/par_scheperjans/par_scheperjans_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: PAR
+        reference: H
+
+t1d_alkanani:
+    table: data/nearing_datasets/Studies/t1d_alkanani/t1d_alkanani_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/t1d_alkanani/t1d_alkanani_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: T1D
+
+t1d_mejialeon:
+    table: data/nearing_datasets/Studies/t1d_mejialeon/t1d_mejialeon_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/t1d_mejialeon/t1d_mejialeon_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: T1D
+
+GWMC_ASIA_NA:
+    table: data/nearing_datasets/Studies/GWMC_ASIA_NA/GWMC_ASIA_NA_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/GWMC_ASIA_NA/GWMC_ASIA_NA_metadata.csv
+    tree:
+    model:
+        covariate: comparison
+        target: Asia
+        reference: North America
+
+GWMC_HOT_COLD:
+    table: data/nearing_datasets/Studies/GWMC_HOT_COLD/GWMC_HOT_COLD_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/GWMC_HOT_COLD/GWMC_HOT_COLD_metadata.csv
+    tree:
+    model:
+        covariate: comparison
+        target: HOT
+        reference: COLD
+
+sw_sed_detender:
+    table: data/nearing_datasets/Studies/sw_sed_detender/sw_sed_detender_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/sw_sed_detender/sw_sed_detender_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: sediment
+        reference: seawater
+
+sw_plastic_frere:
+    table: data/nearing_datasets/Studies/sw_plastic_frere/sw_plastic_frere_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/sw_plastic_frere/sw_plastic_frere_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: seawater
+        reference: plastic
+
+sed_plastic_hoellein:
+    table: data/nearing_datasets/Studies/sed_plastic_hoellein/sed_plastic_hoellein_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/sed_plastic_hoellein/sed_plastic_hoellein_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: sediment
+        reference: plastic
+
+wood_plastic_kesy:
+    table: data/nearing_datasets/Studies/wood_plastic_kesy/wood_plastic_kesy_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/wood_plastic_kesy/wood_plastic_kesy_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: wood
+        reference: plastic
+
+seston_plastic_mccormick:
+    table: data/nearing_datasets/Studies/seston_plastic_mccormick/seston_plastic_mccormick_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/seston_plastic_mccormick/seston_plastic_mccormick_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: plastic
+        reference: organic
+
+glass_plastic_oberbeckmann:
+    table: data/nearing_datasets/Studies/glass_plastic_oberbeckmann/glass_plastic_oberbeckmann_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/glass_plastic_oberbeckmann/glass_plastic_oberbeckmann_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: glass
+        reference: plastic
+
+sed_plastic_rosato:
+    table: data/nearing_datasets/Studies/sed_plastic_rosato/sed_plastic_rosato_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/sed_plastic_rosato/sed_plastic_rosato_metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: sediment
+        reference: plastic
+
+ArcticTransects:
+    table: data/nearing_datasets/Studies/ArcticTransects/ArcticTransects_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/ArcticTransects/ArcticTransects_meta.tsv
+    tree:
+    model:
+        covariate: continent
+        target: Russia
+        reference: NorthAmerica
+
+ArcticFireSoils:
+    table: data/nearing_datasets/Studies/ArcticFireSoils/ArcticFireSoils_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/ArcticFireSoils/ArcticFireSoils_meta.tsv
+    tree:
+    model:
+        covariate: Fire
+        target: Control
+        reference: Fire
+
+ArcticFreshwaters:
+    table: data/nearing_datasets/Studies/ArcticFreshwaters/ArcticFreshwaters_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/ArcticFreshwaters/ArcticFreshwaters_meta.tsv
+    tree:
+    model:
+        covariate: Location
+        target: Watershed
+        reference: Lake
+
+Ji_WTP_DS:
+    table: data/nearing_datasets/Studies/Ji_WTP_DS/Ji_WTP_DS_ASVs_table.tsv
+    metadata: data/nearing_datasets/Studies/Ji_WTP_DS/Ji_WTP_DS_metadata.csv
+    tree:
+    model:
+        covariate: comparison
+        target: WTP
+        reference: DS
+
+stylesheet: config/qadabra.mplstyle
+tools:
+    - deseq2
+    - ancombc
+    - songbird
+    - aldex2
+    - edger
+    - maaslin2
+    - metagenomeseq
+    - corncob
+songbird_params:
+    epochs: 5000
+    differential_prior: 1
+log_ratio_feat_pcts:
+    - 5
+    - 10
+    - 15
+    - 20
+ml_params:
+    n_splits: 10
+    n_repeats: 5
