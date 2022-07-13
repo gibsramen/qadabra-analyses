@@ -11,12 +11,19 @@ use rule {{ tool }} from {{ dataset_name }} as {{ dataset_name }}_{{ tool }} wit
     input:
         table=dataset_cfg["{{ dataset_name }}"]["table"],
         metadata=dataset_cfg["{{ dataset_name }}"]["metadata"]
+    {%- if tool == 'songbird' %}
+    params:
+        formula=dataset_cfg["{{ dataset_name }}"]["songbird_formula"],
+        diff_prior=config["songbird_params"]["differential_prior"],
+        epochs=config["songbird_params"]["epochs"]
+    {%- endif %}
 {% endfor %}
-
 use rule log_ratios from {{ dataset_name }} as {{ dataset_name }}_log_ratios with:
     input:
         table=dataset_cfg["{{ dataset_name }}"]["table"],
+        feats="all_results/{{ dataset_name }}/results/ml/{tool}/pctile_feats/pctile_{pctile}.tsv"
 
 use rule logistic_regression from {{ dataset_name }} as {{ dataset_name }} logistic_regression with:
     input:
+        log_ratios="all_results/{{ dataset_name }}/results/ml/{tool}/log_ratios/log_ratios.pctile_{pctile}.tsv",
         metadata=dataset_cfg["{{ dataset_name }}"]["metadata"]

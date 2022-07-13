@@ -130,6 +130,8 @@ def main(logger: logging.Logger):
         min_grp = group_counts.idxmin()
         logger.info(f"Using group with more samples as reference: {max_grp}")
 
+        songbird_formula = f"C({covariate_name}, Treatment('{max_grp}'))"
+
         logger.info("Writing dataset specific Snakefile...")
         dataset_snkfile_text = (
             DATASET_SNKFILE_TEMPLATE
@@ -143,7 +145,8 @@ def main(logger: logging.Logger):
             "metadata_file": new_metadata_fpath,
             "covariate_name": covariate_name,
             "target_name": min_grp,
-            "reference_name": max_grp
+            "reference_name": max_grp,
+            "songbird_formula": songbird_formula
         }
 
     logger.info("=========================================================")
