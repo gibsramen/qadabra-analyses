@@ -1,0 +1,14 @@
+module {{ dataset_name }}:
+    snakefile:
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+    config:
+        create_cfg("{{ dataset_name }}")
+    prefix: "all_results/{{ dataset_name }}"
+
+use rule * from {{ dataset_name }} as {{ dataset_name }}_*
+{% for tool in all_tools %}
+use rule {{ tool }} from {{ dataset_name }} as {{ dataset_name }}_{{ tool }} with:
+    input:
+        table=dataset_cfg["{{ dataset_name }}"]["table"],
+        metadata=dataset_cfg["{{ dataset_name }}"]["metadata"]
+{% endfor %}

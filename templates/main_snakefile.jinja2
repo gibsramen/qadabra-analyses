@@ -1,0 +1,22 @@
+import yaml
+
+from snakemake.utils import min_version
+min_version("6.0")
+
+
+configfile: "config/main_config.yaml"
+
+with open("config/dataset_config.yaml", "r") as f:
+    dataset_cfg = yaml.safe_load(f)
+
+
+def create_cfg(dataset_name):
+    cfg = config.copy()
+    cfg.update(dataset_cfg[dataset_name])
+    return cfg
+
+
+# Separate Snakefile for each dataset
+{%- for dataset_name, dataset_dict in all_dataset_dict.items() %}
+include: "all_results/{{ dataset_name }}/Snakefile"
+{%- endfor %}

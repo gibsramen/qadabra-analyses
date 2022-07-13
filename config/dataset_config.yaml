@@ -1,0 +1,380 @@
+
+Chemerin:
+    table: all_results/Chemerin/table.biom
+    metadata: all_results/Chemerin/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: PaloAlto
+        reference: Dalhousie
+        confounders:
+
+Blueberry:
+    table: all_results/Blueberry/table.biom
+    metadata: all_results/Blueberry/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: Rhizosphere
+        reference: Soil
+        confounders:
+
+MALL:
+    table: all_results/MALL/table.biom
+    metadata: all_results/MALL/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: Y
+        reference: No
+        confounders:
+
+Exercise:
+    table: all_results/Exercise/table.biom
+    metadata: all_results/Exercise/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: exercise
+        reference: control
+        confounders:
+
+BISCUIT:
+    table: all_results/BISCUIT/table.biom
+    metadata: all_results/BISCUIT/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: CD
+        reference: control
+        confounders:
+
+Office:
+    table: all_results/Office/table.biom
+    metadata: all_results/Office/metadata.tsv
+    tree:
+    model:
+        covariate: city
+        target: toronto
+        reference: sandiego
+        confounders:
+
+art_scher:
+    table: all_results/art_scher/table.biom
+    metadata: all_results/art_scher/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: ART
+        confounders:
+
+asd_son:
+    table: all_results/asd_son/table.biom
+    metadata: all_results/asd_son/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: ASD
+        confounders:
+
+cdi_schubert:
+    table: all_results/cdi_schubert/table.biom
+    metadata: all_results/cdi_schubert/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: CDI
+        reference: H
+        confounders:
+
+cdi_vincent:
+    table: all_results/cdi_vincent/table.biom
+    metadata: all_results/cdi_vincent/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: CDI
+        reference: H
+        confounders:
+
+crc_baxter:
+    table: all_results/crc_baxter/table.biom
+    metadata: all_results/crc_baxter/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: CRC
+        reference: H
+        confounders:
+
+crc_zeller:
+    table: all_results/crc_zeller/table.biom
+    metadata: all_results/crc_zeller/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: CRC
+        reference: H
+        confounders:
+
+edd_singh:
+    table: all_results/edd_singh/table.biom
+    metadata: all_results/edd_singh/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: EDD
+        confounders:
+
+hiv_dinh:
+    table: all_results/hiv_dinh/table.biom
+    metadata: all_results/hiv_dinh/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: HIV
+        confounders:
+
+hiv_lozupone:
+    table: all_results/hiv_lozupone/table.biom
+    metadata: all_results/hiv_lozupone/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: HIV
+        confounders:
+
+hiv_noguerajulian:
+    table: all_results/hiv_noguerajulian/table.biom
+    metadata: all_results/hiv_noguerajulian/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: HIV
+        confounders:
+
+ibd_gevers:
+    table: all_results/ibd_gevers/table.biom
+    metadata: all_results/ibd_gevers/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: nonIBD
+        reference: CD
+        confounders:
+
+ibd_papa:
+    table: all_results/ibd_papa/table.biom
+    metadata: all_results/ibd_papa/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: nonIBD
+        reference: IBD
+        confounders:
+
+ob_goodrich:
+    table: all_results/ob_goodrich/table.biom
+    metadata: all_results/ob_goodrich/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: OB
+        reference: H
+        confounders:
+
+ob_ross:
+    table: all_results/ob_ross/table.biom
+    metadata: all_results/ob_ross/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: OB
+        confounders:
+
+ob_turnbaugh:
+    table: all_results/ob_turnbaugh/table.biom
+    metadata: all_results/ob_turnbaugh/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: OB
+        confounders:
+
+ob_zhu:
+    table: all_results/ob_zhu/table.biom
+    metadata: all_results/ob_zhu/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: OB
+        confounders:
+
+par_scheperjans:
+    table: all_results/par_scheperjans/table.biom
+    metadata: all_results/par_scheperjans/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: PAR
+        reference: H
+        confounders:
+
+t1d_alkanani:
+    table: all_results/t1d_alkanani/table.biom
+    metadata: all_results/t1d_alkanani/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: T1D
+        reference: H
+        confounders:
+
+t1d_mejialeon:
+    table: all_results/t1d_mejialeon/table.biom
+    metadata: all_results/t1d_mejialeon/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: H
+        reference: T1D
+        confounders:
+
+GWMC_ASIA_NA:
+    table: all_results/GWMC_ASIA_NA/table.biom
+    metadata: all_results/GWMC_ASIA_NA/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: Asia
+        reference: North America
+        confounders:
+
+GWMC_HOT_COLD:
+    table: all_results/GWMC_HOT_COLD/table.biom
+    metadata: all_results/GWMC_HOT_COLD/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: HOT
+        reference: COLD
+        confounders:
+
+sw_sed_detender:
+    table: all_results/sw_sed_detender/table.biom
+    metadata: all_results/sw_sed_detender/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: sediment
+        reference: seawater
+        confounders:
+
+sw_plastic_frere:
+    table: all_results/sw_plastic_frere/table.biom
+    metadata: all_results/sw_plastic_frere/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: seawater
+        reference: plastic
+        confounders:
+
+sed_plastic_hoellein:
+    table: all_results/sed_plastic_hoellein/table.biom
+    metadata: all_results/sed_plastic_hoellein/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: sediment
+        reference: plastic
+        confounders:
+
+wood_plastic_kesy:
+    table: all_results/wood_plastic_kesy/table.biom
+    metadata: all_results/wood_plastic_kesy/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: wood
+        reference: plastic
+        confounders:
+
+seston_plastic_mccormick:
+    table: all_results/seston_plastic_mccormick/table.biom
+    metadata: all_results/seston_plastic_mccormick/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: plastic
+        reference: organic
+        confounders:
+
+glass_plastic_oberbeckmann:
+    table: all_results/glass_plastic_oberbeckmann/table.biom
+    metadata: all_results/glass_plastic_oberbeckmann/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: glass
+        reference: plastic
+        confounders:
+
+sed_plastic_rosato:
+    table: all_results/sed_plastic_rosato/table.biom
+    metadata: all_results/sed_plastic_rosato/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: sediment
+        reference: plastic
+        confounders:
+
+ArcticTransects:
+    table: all_results/ArcticTransects/table.biom
+    metadata: all_results/ArcticTransects/metadata.tsv
+    tree:
+    model:
+        covariate: continent
+        target: Russia
+        reference: NorthAmerica
+        confounders:
+
+ArcticFireSoils:
+    table: all_results/ArcticFireSoils/table.biom
+    metadata: all_results/ArcticFireSoils/metadata.tsv
+    tree:
+    model:
+        covariate: Fire
+        target: Control
+        reference: Fire
+        confounders:
+
+ArcticFreshwaters:
+    table: all_results/ArcticFreshwaters/table.biom
+    metadata: all_results/ArcticFreshwaters/metadata.tsv
+    tree:
+    model:
+        covariate: Location
+        target: Watershed
+        reference: Lake
+        confounders:
+
+Ji_WTP_DS:
+    table: all_results/Ji_WTP_DS/table.biom
+    metadata: all_results/Ji_WTP_DS/metadata.tsv
+    tree:
+    model:
+        covariate: comparison
+        target: WTP
+        reference: DS
+        confounders:

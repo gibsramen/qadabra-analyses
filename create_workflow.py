@@ -8,6 +8,7 @@
 import logging
 import os
 import time
+import yaml
 
 import biom
 from jinja2 import Template
@@ -18,8 +19,18 @@ LOGFILE = "create_workflow.py.log"
 NEARING_DIR = "data/nearing_datasets/"
 NEARING_DATASET_FPATHS = os.path.join(NEARING_DIR, "sorted_input.tsv")
 NEARING_DATASET_NAMES = os.path.join(NEARING_DIR, "dataset_name_mapping.csv")
-SNKFILE_TEMPLATE = "templates/Snakefile.jinja2"
-CFG_TEMPLATE = "templates/config.yaml.jinja2"
+
+with open("templates/main_snakefile.jinja2", "r") as f:
+    MAIN_SNKFILE_TEMPLATE = Template(f.read())
+
+with open("templates/dataset_snakefile.jinja2", "r") as f:
+    DATASET_SNKFILE_TEMPLATE = Template(f.read())
+
+with open("templates/dataset_config.yaml.jinja2", "r") as f:
+    DATASET_CFG_TEMPLATE = Template(f.read())
+
+with open("config/main_config.yaml", "r") as f:
+    ALL_TOOLS = yaml.safe_load(f)["tools"]
 
 
 def main(logger: logging.Logger):
@@ -119,6 +130,14 @@ def main(logger: logging.Logger):
         min_grp = group_counts.idxmin()
         logger.info(f"Using group with more samples as reference: {max_grp}")
 
+        logger.info("Writing dataset specific Snakefile...")
+        dataset_snkfile_text = (
+            DATASET_SNKFILE_TEMPLATE
+            .render({"dataset_name": dataset, "all_tools": ALL_TOOLS})
+        )
+        with open(f"all_results/{dataset}/Snakefile", "w") as f:
+            f.write(dataset_snkfile_text)
+
         all_dataset_dict[dataset] = {
             "table_file": new_table_fpath,
             "metadata_file": new_metadata_fpath,
@@ -129,26 +148,23 @@ def main(logger: logging.Logger):
 
     logger.info("=========================================================")
 
-    with open(SNKFILE_TEMPLATE, "r") as f:
-        snakefile_text = (
-            Template(f.read())
-            .render({"all_dataset_dict": all_dataset_dict})
-        )
+    main_snakefile_text = (
+        MAIN_SNKFILE_TEMPLATE
+        .render({"all_dataset_dict": all_dataset_dict})
+    )
 
-    logger.info("Writing Snakefile...")
-    os.makedirs("workflow", exist_ok=True)
-    with open("workflow/Snakefile", "w") as f:
-        f.write(snakefile_text)
+    logger.info("Writing main Snakefile...")
+    with open("Snakefile", "w") as f:
+        f.write(main_snakefile_text)
 
-    with open(CFG_TEMPLATE, "r") as f:
-        cfg_text = (
-            Template(f.read())
-            .render({"all_dataset_dict": all_dataset_dict})
-        )
+    cfg_text = (
+        DATASET_CFG_TEMPLATE
+        .render({"all_dataset_dict": all_dataset_dict})
+    )
 
     os.makedirs("config", exist_ok=True)
-    logger.info("Writing config file...")
-    with open("config/config.yaml", "w") as f:
+    logger.info("Writing dataset config file...")
+    with open("config/dataset_config.yaml", "w") as f:
         f.write(cfg_text)
 
 
