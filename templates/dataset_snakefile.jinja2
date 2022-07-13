@@ -12,3 +12,11 @@ use rule {{ tool }} from {{ dataset_name }} as {{ dataset_name }}_{{ tool }} wit
         table=dataset_cfg["{{ dataset_name }}"]["table"],
         metadata=dataset_cfg["{{ dataset_name }}"]["metadata"]
 {% endfor %}
+
+use rule log_ratios from {{ dataset_name }} as {{ dataset_name }}_log_ratios with:
+    input:
+        table=dataset_cfg["{{ dataset_name }}"]["table"],
+
+use rule logistic_regression from {{ dataset_name }} as {{ dataset_name }} logistic_regression with:
+    input:
+        metadata=dataset_cfg["{{ dataset_name }}"]["metadata"]

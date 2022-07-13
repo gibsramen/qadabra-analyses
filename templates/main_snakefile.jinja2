@@ -6,14 +6,32 @@ min_version("6.0")
 
 configfile: "config/main_config.yaml"
 
+
 with open("config/dataset_config.yaml", "r") as f:
     dataset_cfg = yaml.safe_load(f)
+all_datasets = list(dataset_cfg.keys())
 
 
 def create_cfg(dataset_name):
     cfg = config.copy()
     cfg.update(dataset_cfg[dataset_name])
     return cfg
+
+target_files = expand(
+    "all_results/{dataset}/figures/{viz}",
+    dataset=all_datasets,
+    viz=["pca.svg", "spearman_heatmap.svg"]
+)
+target_files.extend(expand(
+    "all_results/{dataset}/figures/{curve}/{curve}.pctile_{pctile}.svg",
+    dataset=all_datasets,
+    curve=["pr", "roc"],
+    pctile=config["log_ratio_feat_pcts"]
+))
+
+rule all:
+    input:
+        target_files,
 
 
 # Separate Snakefile for each dataset
