@@ -1,3 +1,5 @@
+import os
+
 module {{ dataset_name }}:
     snakefile:
         github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.1")
@@ -15,7 +17,8 @@ use rule {{ tool }} from {{ dataset_name }} as {{ dataset_name }}_{{ tool }} wit
     params:
         formula=dataset_cfg["{{ dataset_name }}"]["songbird_formula"],
         diff_prior=config["songbird_params"]["differential_prior"],
-        epochs=config["songbird_params"]["epochs"]
+        epochs=config["songbird_params"]["epochs"],
+        outdir=lambda wildcards, output: os.path.dirname(output[0]),
     {%- endif %}
 {% endfor %}
 use rule log_ratios from {{ dataset_name }} as {{ dataset_name }}_log_ratios with:
