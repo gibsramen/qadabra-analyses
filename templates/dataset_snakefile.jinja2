@@ -1,6 +1,6 @@
 module {{ dataset_name }}:
     snakefile:
-        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.0")
+        github("gibsramen/qadabra", path="workflow/Snakefile", tag="v0.2.1")
     config:
         create_cfg("{{ dataset_name }}")
     prefix: "all_results/{{ dataset_name }}"
