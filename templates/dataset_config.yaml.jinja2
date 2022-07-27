@@ -1,12 +1,12 @@
-{%- for dataset_name, dataset_dict in all_dataset_dict.items() %}
+{% for dataset_name, dataset_dict in all_dataset_dict.items() -%}
 {{ dataset_name }}:
     table: {{ dataset_dict.table_file }}
     metadata: {{ dataset_dict.metadata_file }}
     tree:
     model:
-        covariate: {{ dataset_dict.covariate_name }}
-        target: {{ dataset_dict.target_name }}
-        reference: {{ dataset_dict.reference_name }}
+        covariate: "{{ dataset_dict.covariate_name }}"
+        target: "{{ dataset_dict.target_name }}"
+        reference: "{{ dataset_dict.reference_name }}"
         confounders:
     songbird_formula: {{ dataset_dict.songbird_formula }}
-{%- endfor %}
+{% endfor %}

@@ -22,12 +22,6 @@ target_files = expand(
     dataset=all_datasets,
     viz=["pca.svg", "spearman_heatmap.svg"]
 )
-target_files.extend(expand(
-    "all_results/{dataset}/figures/{curve}/{curve}.pctile_{pctile}.svg",
-    dataset=all_datasets,
-    curve=["pr", "roc"],
-    pctile=config["log_ratio_feat_pcts"]
-))
 
 rule all:
     input:

@@ -1,12 +1,11 @@
-
 Chemerin:
     table: all_results/Chemerin/table.biom
     metadata: all_results/Chemerin/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: PaloAlto
-        reference: Dalhousie
+        covariate: "comparison"
+        target: "PaloAlto"
+        reference: "Dalhousie"
         confounders:
     songbird_formula: C(comparison, Treatment('Dalhousie'))
 Blueberry:
@@ -14,9 +13,9 @@ Blueberry:
     metadata: all_results/Blueberry/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: Rhizosphere
-        reference: Soil
+        covariate: "comparison"
+        target: "Rhizosphere"
+        reference: "Soil"
         confounders:
     songbird_formula: C(comparison, Treatment('Soil'))
 MALL:
@@ -24,9 +23,9 @@ MALL:
     metadata: all_results/MALL/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: Y
-        reference: No
+        covariate: "comparison"
+        target: "Y"
+        reference: "No"
         confounders:
     songbird_formula: C(comparison, Treatment('No'))
 Exercise:
@@ -34,9 +33,9 @@ Exercise:
     metadata: all_results/Exercise/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: exercise
-        reference: control
+        covariate: "comparison"
+        target: "exercise"
+        reference: "control"
         confounders:
     songbird_formula: C(comparison, Treatment('control'))
 BISCUIT:
@@ -44,9 +43,9 @@ BISCUIT:
     metadata: all_results/BISCUIT/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: CD
-        reference: control
+        covariate: "comparison"
+        target: "CD"
+        reference: "control"
         confounders:
     songbird_formula: C(comparison, Treatment('control'))
 Office:
@@ -54,9 +53,9 @@ Office:
     metadata: all_results/Office/metadata.tsv
     tree:
     model:
-        covariate: city
-        target: toronto
-        reference: sandiego
+        covariate: "city"
+        target: "toronto"
+        reference: "sandiego"
         confounders:
     songbird_formula: C(city, Treatment('sandiego'))
 art_scher:
@@ -64,9 +63,9 @@ art_scher:
     metadata: all_results/art_scher/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: H
-        reference: ART
+        covariate: "comparison"
+        target: "H"
+        reference: "ART"
         confounders:
     songbird_formula: C(comparison, Treatment('ART'))
 asd_son:
@@ -74,9 +73,9 @@ asd_son:
     metadata: all_results/asd_son/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: H
-        reference: ASD
+        covariate: "comparison"
+        target: "H"
+        reference: "ASD"
         confounders:
     songbird_formula: C(comparison, Treatment('ASD'))
 cdi_schubert:
@@ -84,9 +83,9 @@ cdi_schubert:
     metadata: all_results/cdi_schubert/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: CDI
-        reference: H
+        covariate: "comparison"
+        target: "CDI"
+        reference: "H"
         confounders:
     songbird_formula: C(comparison, Treatment('H'))
 cdi_vincent:
@@ -94,9 +93,9 @@ cdi_vincent:
     metadata: all_results/cdi_vincent/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: CDI
-        reference: H
+        covariate: "comparison"
+        target: "CDI"
+        reference: "H"
         confounders:
     songbird_formula: C(comparison, Treatment('H'))
 crc_baxter:
@@ -104,9 +103,9 @@ crc_baxter:
     metadata: all_results/crc_baxter/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: CRC
-        reference: H
+        covariate: "comparison"
+        target: "CRC"
+        reference: "H"
         confounders:
     songbird_formula: C(comparison, Treatment('H'))
 crc_zeller:
@@ -114,9 +113,9 @@ crc_zeller:
     metadata: all_results/crc_zeller/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: CRC
-        reference: H
+        covariate: "comparison"
+        target: "CRC"
+        reference: "H"
         confounders:
     songbird_formula: C(comparison, Treatment('H'))
 edd_singh:
@@ -124,9 +123,9 @@ edd_singh:
     metadata: all_results/edd_singh/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: H
-        reference: EDD
+        covariate: "comparison"
+        target: "H"
+        reference: "EDD"
         confounders:
     songbird_formula: C(comparison, Treatment('EDD'))
 hiv_dinh:
@@ -134,9 +133,9 @@ hiv_dinh:
     metadata: all_results/hiv_dinh/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: H
-        reference: HIV
+        covariate: "comparison"
+        target: "H"
+        reference: "HIV"
         confounders:
     songbird_formula: C(comparison, Treatment('HIV'))
 hiv_lozupone:
@@ -144,9 +143,9 @@ hiv_lozupone:
     metadata: all_results/hiv_lozupone/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: H
-        reference: HIV
+        covariate: "comparison"
+        target: "H"
+        reference: "HIV"
         confounders:
     songbird_formula: C(comparison, Treatment('HIV'))
 hiv_noguerajulian:
@@ -154,9 +153,9 @@ hiv_noguerajulian:
     metadata: all_results/hiv_noguerajulian/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: H
-        reference: HIV
+        covariate: "comparison"
+        target: "H"
+        reference: "HIV"
         confounders:
     songbird_formula: C(comparison, Treatment('HIV'))
 ibd_gevers:
@@ -164,9 +163,9 @@ ibd_gevers:
     metadata: all_results/ibd_gevers/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: nonIBD
-        reference: CD
+        covariate: "comparison"
+        target: "nonIBD"
+        reference: "CD"
         confounders:
     songbird_formula: C(comparison, Treatment('CD'))
 ibd_papa:
@@ -174,9 +173,9 @@ ibd_papa:
     metadata: all_results/ibd_papa/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: nonIBD
-        reference: IBD
+        covariate: "comparison"
+        target: "nonIBD"
+        reference: "IBD"
         confounders:
     songbird_formula: C(comparison, Treatment('IBD'))
 ob_goodrich:
@@ -184,9 +183,9 @@ ob_goodrich:
     metadata: all_results/ob_goodrich/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: OB
-        reference: H
+        covariate: "comparison"
+        target: "OB"
+        reference: "H"
         confounders:
     songbird_formula: C(comparison, Treatment('H'))
 ob_ross:
@@ -194,9 +193,9 @@ ob_ross:
     metadata: all_results/ob_ross/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: H
-        reference: OB
+        covariate: "comparison"
+        target: "H"
+        reference: "OB"
         confounders:
     songbird_formula: C(comparison, Treatment('OB'))
 ob_turnbaugh:
@@ -204,9 +203,9 @@ ob_turnbaugh:
     metadata: all_results/ob_turnbaugh/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: H
-        reference: OB
+        covariate: "comparison"
+        target: "H"
+        reference: "OB"
         confounders:
     songbird_formula: C(comparison, Treatment('OB'))
 ob_zhu:
@@ -214,9 +213,9 @@ ob_zhu:
     metadata: all_results/ob_zhu/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: H
-        reference: OB
+        covariate: "comparison"
+        target: "H"
+        reference: "OB"
         confounders:
     songbird_formula: C(comparison, Treatment('OB'))
 par_scheperjans:
@@ -224,9 +223,9 @@ par_scheperjans:
     metadata: all_results/par_scheperjans/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: PAR
-        reference: H
+        covariate: "comparison"
+        target: "PAR"
+        reference: "H"
         confounders:
     songbird_formula: C(comparison, Treatment('H'))
 t1d_alkanani:
@@ -234,9 +233,9 @@ t1d_alkanani:
     metadata: all_results/t1d_alkanani/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: T1D
-        reference: H
+        covariate: "comparison"
+        target: "T1D"
+        reference: "H"
         confounders:
     songbird_formula: C(comparison, Treatment('H'))
 t1d_mejialeon:
@@ -244,9 +243,9 @@ t1d_mejialeon:
     metadata: all_results/t1d_mejialeon/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: H
-        reference: T1D
+        covariate: "comparison"
+        target: "H"
+        reference: "T1D"
         confounders:
     songbird_formula: C(comparison, Treatment('T1D'))
 GWMC_ASIA_NA:
@@ -254,9 +253,9 @@ GWMC_ASIA_NA:
     metadata: all_results/GWMC_ASIA_NA/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: Asia
-        reference: North America
+        covariate: "comparison"
+        target: "Asia"
+        reference: "North America"
         confounders:
     songbird_formula: C(comparison, Treatment('North America'))
 GWMC_HOT_COLD:
@@ -264,9 +263,9 @@ GWMC_HOT_COLD:
     metadata: all_results/GWMC_HOT_COLD/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: HOT
-        reference: COLD
+        covariate: "comparison"
+        target: "HOT"
+        reference: "COLD"
         confounders:
     songbird_formula: C(comparison, Treatment('COLD'))
 sw_sed_detender:
@@ -274,9 +273,9 @@ sw_sed_detender:
     metadata: all_results/sw_sed_detender/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: sediment
-        reference: seawater
+        covariate: "comparison"
+        target: "sediment"
+        reference: "seawater"
         confounders:
     songbird_formula: C(comparison, Treatment('seawater'))
 sw_plastic_frere:
@@ -284,9 +283,9 @@ sw_plastic_frere:
     metadata: all_results/sw_plastic_frere/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: seawater
-        reference: plastic
+        covariate: "comparison"
+        target: "seawater"
+        reference: "plastic"
         confounders:
     songbird_formula: C(comparison, Treatment('plastic'))
 sed_plastic_hoellein:
@@ -294,9 +293,9 @@ sed_plastic_hoellein:
     metadata: all_results/sed_plastic_hoellein/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: sediment
-        reference: plastic
+        covariate: "comparison"
+        target: "sediment"
+        reference: "plastic"
         confounders:
     songbird_formula: C(comparison, Treatment('plastic'))
 wood_plastic_kesy:
@@ -304,9 +303,9 @@ wood_plastic_kesy:
     metadata: all_results/wood_plastic_kesy/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: wood
-        reference: plastic
+        covariate: "comparison"
+        target: "wood"
+        reference: "plastic"
         confounders:
     songbird_formula: C(comparison, Treatment('plastic'))
 seston_plastic_mccormick:
@@ -314,9 +313,9 @@ seston_plastic_mccormick:
     metadata: all_results/seston_plastic_mccormick/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: plastic
-        reference: organic
+        covariate: "comparison"
+        target: "plastic"
+        reference: "organic"
         confounders:
     songbird_formula: C(comparison, Treatment('organic'))
 glass_plastic_oberbeckmann:
@@ -324,9 +323,9 @@ glass_plastic_oberbeckmann:
     metadata: all_results/glass_plastic_oberbeckmann/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: glass
-        reference: plastic
+        covariate: "comparison"
+        target: "glass"
+        reference: "plastic"
         confounders:
     songbird_formula: C(comparison, Treatment('plastic'))
 sed_plastic_rosato:
@@ -334,9 +333,9 @@ sed_plastic_rosato:
     metadata: all_results/sed_plastic_rosato/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: sediment
-        reference: plastic
+        covariate: "comparison"
+        target: "sediment"
+        reference: "plastic"
         confounders:
     songbird_formula: C(comparison, Treatment('plastic'))
 ArcticTransects:
@@ -344,9 +343,9 @@ ArcticTransects:
     metadata: all_results/ArcticTransects/metadata.tsv
     tree:
     model:
-        covariate: continent
-        target: Russia
-        reference: NorthAmerica
+        covariate: "continent"
+        target: "Russia"
+        reference: "NorthAmerica"
         confounders:
     songbird_formula: C(continent, Treatment('NorthAmerica'))
 ArcticFireSoils:
@@ -354,9 +353,9 @@ ArcticFireSoils:
     metadata: all_results/ArcticFireSoils/metadata.tsv
     tree:
     model:
-        covariate: Fire
-        target: Control
-        reference: Fire
+        covariate: "Fire"
+        target: "Control"
+        reference: "Fire"
         confounders:
     songbird_formula: C(Fire, Treatment('Fire'))
 ArcticFreshwaters:
@@ -364,9 +363,9 @@ ArcticFreshwaters:
     metadata: all_results/ArcticFreshwaters/metadata.tsv
     tree:
     model:
-        covariate: Location
-        target: Watershed
-        reference: Lake
+        covariate: "Location"
+        target: "Watershed"
+        reference: "Lake"
         confounders:
     songbird_formula: C(Location, Treatment('Lake'))
 Ji_WTP_DS:
@@ -374,8 +373,8 @@ Ji_WTP_DS:
     metadata: all_results/Ji_WTP_DS/metadata.tsv
     tree:
     model:
-        covariate: comparison
-        target: WTP
-        reference: DS
+        covariate: "comparison"
+        target: "WTP"
+        reference: "DS"
         confounders:
     songbird_formula: C(comparison, Treatment('DS'))
