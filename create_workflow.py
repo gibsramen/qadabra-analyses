@@ -2,7 +2,8 @@
 #SBATCH --chdir=/home/grahman/projects/qadabra-analyses
 #SBATCH --output=/home/grahman/projects/qadabra-analyses/%x.slurm.out
 #SBATCH --partition=short
-#SBATCH --mem=32G
+#SBATCH --cpus-per-task=38
+#SBATCH --mem-per-cpu=8G
 #SBATCH --time=6:00:00
 
 import logging
@@ -12,6 +13,7 @@ import yaml
 
 import biom
 from jinja2 import Template
+from joblib import Parallel, delayed
 import numpy as np
 import pandas as pd
 
@@ -33,6 +35,112 @@ with open("config/main_config.yaml", "r") as f:
     ALL_TOOLS = yaml.safe_load(f)["tools"]
 
 
+def process_single_dataset(
+    logger: logging.Logger,
+    dataset: str,
+    dataset_files: list,
+):
+    os.makedirs(f"all_results/{dataset}", exist_ok=True)
+    logger.info("=========================================================")
+    logger.info(f"Dataset: {dataset}")
+
+    this_dataset_table_file, this_dataset_metadata_file = [
+        x for x in dataset_files
+        if dataset in x
+        and "No_filt_Results" not in x
+        and "rare" not in x
+    ]
+
+    new_table_fpath = f"all_results/{dataset}/table.biom"
+    new_metadata_fpath = f"all_results/{dataset}/metadata.tsv"
+
+    logger.info(f"Original table file: {this_dataset_table_file}")
+    logger.info(f"Metadata file: {this_dataset_metadata_file}")
+
+    # Convert TSV -> BIOM
+    try:
+        tbl_tsv = pd.read_table(this_dataset_table_file, sep="\t", index_col=0)
+    except IndexError:
+        # At least one of the datasets has a # comment row
+        tbl_tsv = pd.read_table(this_dataset_table_file, sep="\t",
+                                index_col=0, skiprows=[0])
+        logger.info("Skipping first row")
+
+    # Remove taxonomy column from tables that have it
+    if "taxonomy" in tbl_tsv.columns:
+        logger.info("Dropping taxonomy column")
+        tbl_tsv = tbl_tsv.drop(columns=["taxonomy"])
+
+    # Append S_ to sample IDs to coerce to string
+    tbl_tsv.columns = [f"S_{x}" for x in tbl_tsv.columns]
+    tbl_biom = biom.Table(tbl_tsv.values, sample_ids=tbl_tsv.columns,
+                          observation_ids=tbl_tsv.index)
+    this_dataset_metadata = pd.read_table(
+        this_dataset_metadata_file,
+        sep="\t",
+        index_col=0
+    ).squeeze()
+    this_dataset_metadata.index = [
+        f"S_{x}" for x in this_dataset_metadata.index
+    ]
+
+    # 10% prevalence filter
+    logger.info("Filtering at 10% prevalence...")
+    prev = tbl_biom.pa(inplace=False).sum(axis="observation")
+    n = int(tbl_biom.shape[1] * 0.1)
+    feats_to_keep = tbl_biom.ids("observation")[np.where(prev >= n)]
+    tbl_biom.filter(feats_to_keep, "observation")
+    tbl_biom.remove_empty()
+
+    # Filter table and metadata to common samples
+    samps_to_keep = list(
+        set(tbl_biom.ids()).intersection(this_dataset_metadata.index)
+    )
+    tbl_biom.filter(samps_to_keep)
+    logger.info(f"New table shape: {tbl_biom.shape}")
+
+    with biom.util.biom_open(new_table_fpath, "w") as f:
+        tbl_biom.to_hdf5(f, "converted")
+    logger.info(f"Saved converted table to {new_table_fpath}!")
+
+    this_dataset_metadata = this_dataset_metadata.loc[samps_to_keep]
+    logger.info(f"Metadata shape: {this_dataset_metadata.shape}")
+
+    this_dataset_metadata.to_csv(new_metadata_fpath, sep="\t", index=True)
+    logger.info(f"Saved filtered table to {new_metadata_fpath}")
+
+    covariate_name = this_dataset_metadata.name
+    logger.info(f"Covariate name: {covariate_name}")
+
+    group_counts = this_dataset_metadata.value_counts()
+    logger.info(f"Group counts: {group_counts.to_dict()}")
+
+    max_grp = group_counts.idxmax()
+    min_grp = group_counts.idxmin()
+    logger.info(f"Using group with more samples as reference: {max_grp}")
+
+    songbird_formula = f"C({covariate_name}, Treatment('{max_grp}'))"
+
+    logger.info("Writing dataset specific Snakefile...")
+
+    dataset_snkfile_text = (
+        DATASET_SNKFILE_TEMPLATE
+        .render({"dataset_name": dataset, "all_tools": ALL_TOOLS})
+    )
+    with open(f"all_results/{dataset}/Snakefile", "w") as f:
+        f.write(dataset_snkfile_text)
+
+    d = {
+        "table_file": new_table_fpath,
+        "metadata_file": new_metadata_fpath,
+        "covariate_name": covariate_name,
+        "target_name": min_grp,
+        "reference_name": max_grp,
+        "songbird_formula": songbird_formula
+    }
+    return d
+
+
 def main(logger: logging.Logger):
     logger.info("Loading dataset filepaths...")
     with open(NEARING_DATASET_FPATHS, "r") as f:
@@ -50,106 +158,22 @@ def main(logger: logging.Logger):
     os.makedirs("all_results", exist_ok=True)
     all_dataset_dict = dict()
     logger.info("Processing dataset files...")
-    for dataset in dataset_names:
-        os.makedirs(f"all_results/{dataset}", exist_ok=True)
-        logger.info("=========================================================")
-        logger.info(f"Dataset: {dataset}")
-
-        this_dataset_table_file, this_dataset_metadata_file = [
-            x for x in dataset_files
-            if dataset in x
-            and "No_filt_Results" not in x
-            and "rare" not in x
-        ]
-
-        new_table_fpath = f"all_results/{dataset}/table.biom"
-        new_metadata_fpath = f"all_results/{dataset}/metadata.tsv"
-
-        logger.info(f"Original table file: {this_dataset_table_file}")
-        logger.info(f"Metadata file: {this_dataset_metadata_file}")
-
-        # Convert TSV -> BIOM
-        try:
-            tbl_tsv = pd.read_table(this_dataset_table_file, sep="\t", index_col=0)
-        except IndexError:
-            # At least one of the datasets has a # comment row
-            tbl_tsv = pd.read_table(this_dataset_table_file, sep="\t",
-                                    index_col=0, skiprows=[0])
-            logger.info("Skipping first row")
-
-        # Remove taxonomy column from tables that have it
-        if "taxonomy" in tbl_tsv.columns:
-            logger.info("Dropping taxonomy column")
-            tbl_tsv = tbl_tsv.drop(columns=["taxonomy"])
-
-        # Append S_ to sample IDs to coerce to string
-        tbl_tsv.columns = [f"S_{x}" for x in tbl_tsv.columns]
-        tbl_biom = biom.Table(tbl_tsv.values, sample_ids=tbl_tsv.columns,
-                              observation_ids=tbl_tsv.index)
-        this_dataset_metadata = pd.read_table(
-            this_dataset_metadata_file,
-            sep="\t",
-            index_col=0
-        ).squeeze()
-        this_dataset_metadata.index = [
-            f"S_{x}" for x in this_dataset_metadata.index
-        ]
-
-        # 10% prevalence filter
-        logger.info("Filtering at 10% prevalence...")
-        prev = tbl_biom.pa(inplace=False).sum(axis="observation")
-        n = int(tbl_biom.shape[1] * 0.1)
-        feats_to_keep = tbl_biom.ids("observation")[np.where(prev >= n)]
-        tbl_biom.filter(feats_to_keep, "observation")
-        tbl_biom.remove_empty()
-
-        # Filter table and metadata to common samples
-        samps_to_keep = list(
-            set(tbl_biom.ids()).intersection(this_dataset_metadata.index)
+    parallel_args = {
+        "backend": "multiprocessing",
+        "verbose": 100
+    }
+    dict_list = Parallel(n_jobs=38, **parallel_args)(
+        delayed(process_single_dataset)(
+            logger,
+            dataset,
+            dataset_files,
         )
-        tbl_biom.filter(samps_to_keep)
-        logger.info(f"New table shape: {tbl_biom.shape}")
-
-        with biom.util.biom_open(new_table_fpath, "w") as f:
-            tbl_biom.to_hdf5(f, "converted")
-        logger.info(f"Saved converted table to {new_table_fpath}!")
-
-        this_dataset_metadata = this_dataset_metadata.loc[samps_to_keep]
-        logger.info(f"Metadata shape: {this_dataset_metadata.shape}")
-
-        this_dataset_metadata.to_csv(new_metadata_fpath, sep="\t", index=True)
-        logger.info(f"Saved filtered table to {new_metadata_fpath}")
-
-        covariate_name = this_dataset_metadata.name
-        logger.info(f"Covariate name: {covariate_name}")
-
-        group_counts = this_dataset_metadata.value_counts()
-        logger.info(f"Group counts: {group_counts.to_dict()}")
-
-        max_grp = group_counts.idxmax()
-        min_grp = group_counts.idxmin()
-        logger.info(f"Using group with more samples as reference: {max_grp}")
-
-        songbird_formula = f"C({covariate_name}, Treatment('{max_grp}'))"
-
-        logger.info("Writing dataset specific Snakefile...")
-        dataset_snkfile_text = (
-            DATASET_SNKFILE_TEMPLATE
-            .render({"dataset_name": dataset, "all_tools": ALL_TOOLS})
-        )
-        with open(f"all_results/{dataset}/Snakefile", "w") as f:
-            f.write(dataset_snkfile_text)
-
-        all_dataset_dict[dataset] = {
-            "table_file": new_table_fpath,
-            "metadata_file": new_metadata_fpath,
-            "covariate_name": covariate_name,
-            "target_name": min_grp,
-            "reference_name": max_grp,
-            "songbird_formula": songbird_formula
-        }
-
+        for dataset in dataset_names
+    )
     logger.info("=========================================================")
+
+    for dataset, d in zip(dataset_names, dict_list):
+        all_dataset_dict[dataset] = d
 
     main_snakefile_text = (
         MAIN_SNKFILE_TEMPLATE
@@ -173,7 +197,7 @@ def main(logger: logging.Logger):
 
 if __name__ == "__main__":
     logger = logging.getLogger(__name__)
-    logger.setLevel(logging.INFO)
+    logger.setLevel(logging.DEBUG)
     fh = logging.FileHandler(LOGFILE, mode="w+")
     formatter = logging.Formatter(
         "[%(asctime)s - %(levelname)s] :: %(message)s",
