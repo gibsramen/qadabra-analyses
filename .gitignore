@@ -1,6 +1,7 @@
 *.swp
 tags*
-data/nearing_datasets/Studies
-data/nearing_datasets/Testing_Bias_robustness
+nearing/datasets/Studies/
+nearing/all_results/
 .snakemake/
 *.slurm.out
+*.ipynb
