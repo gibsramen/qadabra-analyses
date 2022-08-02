@@ -5,3 +5,4 @@ nearing/all_results/
 .snakemake/
 *.slurm.out
 *.ipynb
+*ipynb_checkpoints
