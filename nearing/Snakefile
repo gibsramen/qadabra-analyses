@@ -9,7 +9,7 @@ configfile: "config/main_config.yaml"
 
 with open("config/dataset_config.yaml", "r") as f:
     dataset_cfg = yaml.safe_load(f)
-all_datasets = list(dataset_cfg.keys())
+all_results = list(dataset_cfg.keys())
 
 
 def create_cfg(dataset_name):
@@ -19,7 +19,7 @@ def create_cfg(dataset_name):
 
 target_files = expand(
     "all_results/{dataset}/figures/{viz}",
-    dataset=all_datasets,
+    dataset=all_results,
     viz=["pca.svg", "spearman_heatmap.svg"]
 )
 
